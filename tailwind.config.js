@@ -12,8 +12,8 @@ module.exports = {
         circle: '#2F2F2F'
       },
       backgroundImage: {
-        'hero-mobile': "url('/uvdevelop26.github.io/crowfunding-product-page/src/images/image-hero-mobile.jpg')",
-        'hero-desktop': "url('/uvdevelop26.github.io/crowfunding-product-page/src/images/image-hero-desktop.jpg')"
+        'hero-mobile': "url('/src/images/image-hero-mobile.jpg')",
+        'hero-desktop': "url('/src/images/image-hero-desktop.jpg')"
       },
       backgroundSize: {
         'fit': '100% 100%',
