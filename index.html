@@ -16,35 +16,43 @@
 </head>
 
 <body>
-  <!-- hero section -->
-  <div id="hero-section"
-    class="h-[300px] w-screen lg:h-[400px] lg:bg-hero-desktop lg:bg-cover">
+  <!-- ************hero section*********** -->
+  <div id="hero-section" class="h-[300px] w-screen lg:h-[400px]">
     <div class="container px-6 mx-auto lg:px-21">
       <!-- navbar -->
       <nav id="nabvar" class="pt-8 lg:pt-12 lg:flex lg:justify-between">
+
         <div class="flex items-center justify-between">
           <img src="./src/images/logo.svg" alt="logo">
           <button aria-label="open-menu" type="button" id="mobile-menu-open" class="lg:hidden">
             <img src="./src/images/icon-hamburger.svg" alt="logo hamburger">
           </button>
         </div>
+
         <div id="menu-modal"
-          class="hidden fixed top-0 left-0 bottom-0 right-0 z-10 bg-blackOp50 lg:inline-block lg:static lg:bg-transparent">
+          class="hidden fixed top-0 left-0 bottom-0 right-0 z-10 bg-black bg-opacity-0 transition-[opacity] lg:inline-block lg:static lg:bg-transparent">
           <div id="menu-mobile" class="w-[87%] mx-auto mt-8 lg:w-auto lg:mt-0">
             <div class="text-right mb-8 lg:hidden">
               <button id="close-menu-mobile">
                 <img src="./src/images/icon-close-menu.svg" alt="close menu" class="">
               </button>
             </div>
-            <ul class="bg-white rounded-lg lg:flex lg:bg-transparent lg:gap-6">
+            <ul
+              class="hidden bg-white scale-0 rounded-lg transition-[transform] delay-200 lg:flex lg:bg-transparent lg:gap-6 lg:scale-100"
+              id="navlist">
               <li class="py-6 pl-6  border-b lg:py-0 lg:border-none lg:pl-0">
-                <a href="#" class="font-bold tracking-wide lg:text-white lg:tracking-normal lg:text-sm">About</a>
+                <a href="#"
+                  class="font-bold tracking-wide hover:text-moderateCyan lg:text-white lg:tracking-normal lg:text-sm">About</a>
               </li>
-              <li class="py-6 pl-6 font-bold tracking-wide border-b lg:py-0 lg:border-none lg:pl-0">
-                <a href="#" class="font-bold tracking-wide lg:text-white lg:tracking-normal lg:text-sm">Discover</a>
+              <li
+                class="py-6 pl-6 font-bold tracking-wide hover:text-moderateCyan border-b lg:py-0 lg:border-none lg:pl-0">
+                <a href="#"
+                  class="font-bold tracking-wide hover:text-moderateCyan lg:text-white lg:tracking-normal lg:text-sm">Discover</a>
               </li>
               <li class="pt-5 pb-6 pl-6 font-bold tracking-wide lg:py-0 lg:border-none lg:pl-0">
-                <a href="#" class="font-bold tracking-wide lg:text-white lg:tracking-normal lg:text-sm">Get Started</a>
+                <a href="#"
+                  class="font-bold tracking-wide hover:text-moderateCyan lg:text-white lg:tracking-normal lg:text-sm">Get
+                  Started</a>
               </li>
             </ul>
           </div>
@@ -54,6 +62,7 @@
   </div>
   <!-- main content -->
   <main id="main-content">
+
     <div class="container px-6 mx-auto">
       <!-- card header -->
       <header id="header-card"
@@ -201,7 +210,8 @@
 
         <!-- mahogany special -->
 
-        <section id="mahogany-special" class="mt-6 mb-3 p-6 border rounded-lg bg-white opacity-50 lg:px-8 lg:py-8">
+        <section id="section-mahogany-special"
+          class="mt-6 mb-3 p-6 border rounded-lg bg-white opacity-50 lg:px-8 lg:py-8">
           <div class="lg:flex lg:justify-between lg:items-center">
             <h3 class="text-sm font-bold lg:text-lg">
               Mahogany Special Edition
@@ -222,7 +232,8 @@
               <span class="inline-block text-darkGray"> left </span>
             </div>
             <div class="">
-              <button type="button" class="w-41 h-12 rounded-3xl text-sm font-bold text-white bg-darkGray">
+              <button type="button" class="w-41 h-12 rounded-3xl text-sm font-bold text-white bg-darkGray"
+                id="select-reward-mahogany" disabled>
                 Out of Stock
               </button>
             </div>
@@ -236,11 +247,13 @@
 
   <!-- *******************modal*****************  -->
 
-  <div id="modal-select" class="hidden fixed overflow-y-scroll top-0 bottom-0 left-0 right-0 bg-blackOp50 z-30">
+  <div id="modal-select"
+    class="hidden fixed overflow-y-scroll top-0 bottom-0 left-0 right-0 bg-black bg-opacity-0 transition-[opacity] z-30">
     <div class="container px-6 pt-29 mx-auto z-40 lg:pt-47">
 
       <!-- menu -->
-      <div id="menu-select" class="bg-white px-6 py-8 rounded-lg mx-auto max-w-fitXl z-20 lg:px-11 lg:py-12">
+      <div id="menu-select"
+        class="bg-white px-6 py-8 rounded-lg mx-auto max-w-fitXl z-20 scale-0 transition-[transform] delay-150 lg:px-11 lg:py-12">
         <!-- card about me -->
         <div id="select-aboutme">
           <div class="flex justify-between items-center">
@@ -260,8 +273,8 @@
           </p>
         </div>
         <!-- card pledge with no reward -->
-        <section id="select-no-reward" class="mt-6 px-6 py-8 border rounded-lg lg:mt-9">
-          <div id="select-no-reward-header">
+        <section id="select-no-reward" class="mt-6 py-8 border rounded-lg lg:mt-9">
+          <div id="select-no-reward-header" class="px-6">
             <label
               class="flex items-center gap-4 font-bold text-sm tracking-tight hover:text-moderateCyan cursor-pointer lg:gap-8 lg:text-base">
               <input type="radio" name="pledge-radio" id="no-reward" value="no-reward"
@@ -269,10 +282,32 @@
               Pledge with no reward
             </label>
           </div>
-          <p class="pt-8 text-sm text-darkGray tracking-wide leading-6 lg:pt-4 lg:pl-14 lg:tracking-wider ">
+          <p
+            class="pt-8 pb-5 px-6 text-sm text-darkGray tracking-wide leading-6 lg:pt-4 lg:pl-14 lg:pb-0 lg:tracking-wider">
             Choose to support us without a reward if you simply believe in our project. As a backer,
             you will be signed up to receive product updates via email.
           </p>
+          <!-- selected foot  -->
+          <div id="pledge-no-reward-footer" class="hidden border-t pt-7 pb-1 px-6 lg:pt-7 lg:pb-6">
+            <div class="lg:flex lg:justify-between lg:items-center lg:px-7">
+              <div class="text-sm text-center text-darkGray lg:tracking-wide">
+                Enter your pledge
+              </div>
+              <div class="pt-5 pb-4 flex gap-4 items-center justify-center lg:pt-0 lg:pb-0">
+                <button
+                  class="inline-block group h-12 w-24 border text-darkGray text-sm text-start rounded-3xl pl-5 hover:border-moderateCyan"
+                  id="make-pledge-bamboo">
+                  $ <span
+                    class="text-black font-bold inline-block relative pr-2 group-hover:after:content-[''] group-hover:after:absolute group-hover:after:top-0 group-hover:after:right-0 group-hover:after:h-full group-hover:after:border group-hover:after:border-moderateCyan">10</span>
+                </button>
+                <button
+                  class="inline-block bg-moderateCyan text-white font-bold w-28 h-12 rounded-3xl hover:bg-darkCyan"
+                  id="continue-no-reward">
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
         <!-- card pledge with bamboo stand -->
         <section id="select-bamboo-stand" class="mt-6 border rounded-lg">
@@ -354,7 +389,7 @@
                 <span class="font-bold tex-lg lg:text-xl lg:mr-2"> 64</span>
                 <span class="tracking-wider text-darkGray">left</span>
               </div>
-              <!-- -- -->
+
             </div>
             <p class="pt-7 text-sm text-darkGray leading-6 lg:pt-4 lg:pl-14 lg:tracking-wide">
               You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
@@ -411,7 +446,6 @@
                 <span class="font-bold tex-lg lg:text-xl lg:mr-2"> 0</span>
                 <span class="tracking-wider text-darkGray">left</span>
               </div>
-              <!-- -- -->
             </div>
             <p class="pt-7 text-sm text-darkGray leading-6 lg:pt-4 lg:pl-14 lg:tracking-wide">
               You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
@@ -436,7 +470,8 @@
                     class="text-black font-bold inline-block relative pr-2 group-hover:after:content-[''] group-hover:after:absolute group-hover:after:top-0 group-hover:after:right-0 group-hover:after:h-full group-hover:after:border group-hover:after:border-moderateCyan">200</span>
                 </button>
                 <button
-                  class="inline-block bg-moderateCyan text-white font-bold w-28 h-12 rounded-3xl hover:bg-darkCyan" id="continue-mahogany">
+                  class="inline-block bg-moderateCyan text-white font-bold w-28 h-12 rounded-3xl hover:bg-darkCyan"
+                  id="continue-mahogany">
                   Continue
                 </button>
               </div>
@@ -447,11 +482,13 @@
     </div>
   </div>
 
-  <!-- success modal -->
+  <!-- *************** success modal **************** -->
 
-  <div id="success-modal" class="hidden fixed overflow-y-scroll top-0 left-0 bottom-0 right-0 bg-blackOp50 z-50">
+  <div id="success-modal"
+    class="hidden fixed overflow-y-scroll top-0 left-0 bottom-0 right-0 bg-black bg-opacity-0 transition-[opacity] z-50">
     <div class="container px-6 mx-auto pt-[28.6rem]">
-      <div class="bg-white px-6 pt-8 mx-auto max-w-[33.5rem] pb-11 rounded-lg text-center lg:px-8 lg:pt-12">
+      <div
+        class="bg-white px-6 pt-8 mx-auto max-w-[33.5rem] pb-11 rounded-lg text-center scale-0 transition-[transform] delay-150 lg:px-8 lg:pt-12" id="success-modal-menu">
         <img src="./src/images/icon-check.svg" class="mx-auto lg:w-24" alt="" srcset="">
         <h2 class="pt-5 text-lg font-bold tracking-tight lg:pt-11 lg:text-2xl">Thanks for your support!</h2>
         <p class="pt-6 text-sm text-darkGray leading-6 lg:pt-4 lg:text-base lg:leading-7">

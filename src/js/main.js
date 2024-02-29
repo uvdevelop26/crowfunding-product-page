@@ -1,118 +1,212 @@
-const mobileMenuOpen = document.querySelector('#mobile-menu-open');
-const modalMenuMobile = document.querySelector('#menu-modal');
-const mobileMenuClose = document.querySelector('#close-menu-mobile');
+const heroSectionArea = document.querySelector('#hero-section');
+const btnOpenNav = heroSectionArea.querySelector('#mobile-menu-open');
+const btnCloseNav = heroSectionArea.querySelector('#close-menu-mobile');
 
-const header = document.querySelector('#header-card');
-const buttonMenuOpen = header.querySelector('#open-modal-select');
-const markFavorite = header.querySelector('#mark-favorite');
+
+const headerArea = document.querySelector('#header-card');
+const btnOpenSelect = headerArea.querySelector('#open-modal-select');
+const btnMarkFavorite = headerArea.querySelector('#mark-favorite');
+
+const modalSelect = document.querySelector('#modal-select');
+const btnCloseSelect = modalSelect.querySelector('#close-modal-select');
+
+const dataOptionsArea = document.querySelector('#data-options');
+const btnSelectWithRegards = dataOptionsArea.querySelectorAll('button[id|="select-reward"]')
+
+const menuOptions = modalSelect.querySelectorAll('section')
+const inputRadios = modalSelect.querySelectorAll('input[type="radio"]')
 
 const dataPledgeArea = document.querySelector('#data-pledge');
 const progressBar = dataPledgeArea.querySelector('#progress-bar');
 
-const modalMenuSelectOpen = document.querySelector('#modal-select');
-const menuSelect = modalMenuSelectOpen.querySelector('#menu-select');
-const closeMenuSelect = modalMenuSelectOpen.querySelector('#close-modal-select');
-
-const options = menuSelect.querySelectorAll('input[type="radio"]');
-
-const dataOptionsArea = document.querySelector('#data-options');
-const btnOptions = dataOptionsArea.querySelectorAll('button[id|="select-reward"]');
 
 
 
 
+// functions
+
+function animationModalOpen(modal, menu) {
+
+    modal.classList.remove('hidden')
+    menu.classList.remove('hidden')
+
+    setTimeout(() => {
+        
+        modal.classList.remove('bg-opacity-0')
+        modal.classList.add('bg-opacity-40')
+        menu.classList.remove('scale-0')
+        menu.classList.add('scale-100')
+
+    }, 500)
+
+}
+
+function animationModalClose(modal, menu) {
+
+    setTimeout(() => {
+
+        menu.classList.add('scale-0')
+        modal.classList.add('bg-opacity-0')
+        modal.classList.remove('bg-opacity-40')
+
+    }, 500)
+
+    modal.classList.add('hidden')
+    menu.classList.add('hidden')
+
+}
 
 
+function showSelectedMode(menu, footer) {
 
-/* *********** Open and close mobile menu ************ */
+    const inputRadio = menu.querySelector('input[type="radio"]');
 
-mobileMenuOpen.addEventListener('click', () => {
-    modalMenuMobile.classList.remove('hidden');
+    menu.classList.add('border-moderateCyan')
 
-    mobileMenuOpen.classList.add('hidden');
+    inputRadio.checked = 'true'
 
-});
+    setTimeout(() => {
 
-mobileMenuClose.addEventListener('click', () => {
+        footer.classList.remove('hidden')
 
-    mobileMenuOpen.classList.remove('hidden');
+    }, 500)
+}
 
-    modalMenuMobile.classList.add('hidden');
-});
+function hiddeSelectedMode() {
 
-/* *********** Open and close menu select modal ************ */
+    menuOptions.forEach((card, i) => {
 
-buttonMenuOpen.addEventListener('click', () => {
-
-    modalMenuSelectOpen.classList.remove('hidden');
-    
-    const inputNoReward = menuSelect.querySelector('#no-reward');
-
-    inputNoReward.checked = 'true';
-
-});
-
-closeMenuSelect.addEventListener('click', () => {
-
-    const cards = menuSelect.querySelectorAll('section');
-
-    cards.forEach((card, item) => {
-
-        card.classList.remove('border-moderateCyan', 'border-2')
+        card.classList.remove('border-moderateCyan')
 
         const footer = card.querySelector('div[id*="footer"]')
+        footer.classList.add('hidden')
+    })
 
-        if (footer !== null) {
 
-            footer.classList.add('hidden')
-        }
-    });
+}
 
-    modalMenuSelectOpen.classList.add('hidden');
+
+//open and close modal menu nav
+btnOpenNav.addEventListener('click', (e) => {
+
+    const modal = heroSectionArea.querySelector('#menu-modal');
+
+    const menu = modal.querySelector('#navlist')
+
+    animationModalOpen(modal, menu)
+
+    btnOpenNav.classList.add('hidden');
+
 
 });
 
+btnCloseNav.addEventListener('click', (e) => {
 
-btnOptions.forEach((item, i) => {
+    const modal = heroSectionArea.querySelector('#menu-modal');
 
-    item.addEventListener('click', () => {
+    const menu = modal.querySelector('#navlist')
 
-        modalMenuSelectOpen.classList.remove('hidden');
+    btnOpenNav.classList.remove('hidden');
 
-        const cards = menuSelect.querySelectorAll('section + section');
+    animationModalClose(modal, menu)
 
-        cards.forEach((card, j) => {
+    hiddeSelectedMode();
 
+});
+
+//open and close pledge with no reward
+btnOpenSelect.addEventListener('click', () => {
+
+    const menuSelect = modalSelect.querySelector('#menu-select');
+
+    animationModalOpen(modalSelect, menuSelect)
+
+    menuOptions.forEach((menu, i) => {
+        if (menu.id == 'select-no-reward') {
+
+            const footer = menu.querySelector('#pledge-no-reward-footer');
+
+
+            showSelectedMode(menu, footer)
+
+
+        }
+    })
+
+});
+
+btnCloseSelect.addEventListener('click', () => {
+
+    const menuSelect = modalSelect.querySelector('#menu-select');
+
+    animationModalClose(modalSelect, menuSelect)
+
+    hiddeSelectedMode()
+
+});
+
+//open and close menu with rewards
+
+btnSelectWithRegards.forEach((btn, i) => {
+
+    btn.addEventListener('click', (e) => {
+
+        const menuSelect = modalSelect.querySelector('#menu-select');
+
+        animationModalOpen(modalSelect, menuSelect)
+
+        const newCards = Array.from(menuOptions).filter((option) => option.id !== 'select-no-reward')
+
+        newCards.forEach((card, j) => {
             if (i == j) {
-                const inputRadio = card.querySelector('input[type="radio"]');
-
-                inputRadio.checked = 'true';
-
-                card.classList.add('border-moderateCyan', 'border-2')
 
                 const footer = card.querySelector('div[id*="footer"]')
 
-                footer.classList.remove('hidden')
+                showSelectedMode(card, footer)
 
             }
-
-
-
         })
-
-
 
     });
 
-})
+});
 
-/* *********** bookmarked **************** */
+//hande input event to show and hidde selected mode
 
-markFavorite.addEventListener('click', () => {
 
-    const circleSVG = markFavorite.querySelector('circle');
-    const pathSVG = markFavorite.querySelector('path')
-    const span = markFavorite.querySelector('span');
+inputRadios.forEach((radio, i) => {
+
+    radio.addEventListener('change', () => {
+
+        menuOptions.forEach((card, j) => {
+
+            const footer = card.querySelector('div[id*="footer"]')
+
+            if (i == j) {
+
+                showSelectedMode(card, footer)
+
+            } else {
+
+                hiddeSelectedMode()
+
+            }
+
+        })
+
+    })
+
+});
+
+
+
+
+
+btnMarkFavorite.addEventListener('click', () => {
+
+    const circleSVG = btnMarkFavorite.querySelector('circle');
+    const pathSVG = btnMarkFavorite.querySelector('path')
+    const span = btnMarkFavorite.querySelector('span');
     const progress = progressBar.firstElementChild;
 
     const value = circleSVG.attributes.fill.nodeValue
@@ -147,84 +241,6 @@ markFavorite.addEventListener('click', () => {
         progress.classList.remove('bg-moderateCyan');
     }
 
-
-});
-
-//************ selected card ************* */
-
-
-options.forEach((option, i) => {
-
-    option.addEventListener('change', () => {
-
-        const cards = menuSelect.querySelectorAll('section');
-
-
-
-        if (option.checked && option.value == 'no-reward') {
-
-            cards.forEach((card, j) => {
-                if (i == j) {
-                    card.classList.add('border-moderateCyan', 'border-2');
-
-                } else {
-                    card.classList.remove('border-moderateCyan', 'border-2')
-
-                    const footer = card.querySelector('div[id*="footer"]')
-
-                    if (footer !== null) {
-
-                        footer.classList.add('hidden')
-                    }
-                }
-
-            });
-
-        } else if (option.checked && option.value == 'reward-bamboo') {
-            cards.forEach((card, j) => {
-
-                if (i == j) {
-                    card.classList.add('border-moderateCyan', 'border-2')
-
-                    const footer = card.querySelector('div[id*="footer"]')
-
-                    footer.classList.remove('hidden')
-
-                } else {
-                    card.classList.remove('border-moderateCyan', 'border-2')
-
-                    const footer = card.querySelector('div[id*="footer"]')
-
-                    if (footer !== null) {
-
-                        footer.classList.add('hidden')
-                    }
-
-                }
-            });
-        } else if (option.checked && option.value == 'black-reward') {
-            cards.forEach((card, j) => {
-                if (i == j) {
-                    card.classList.add('border-moderateCyan', 'border-2')
-
-                    const footer = card.querySelector('div[id*="footer"]')
-
-                    footer.classList.remove('hidden')
-
-                } else {
-                    card.classList.remove('border-moderateCyan', 'border-2')
-
-                    const footer = card.querySelector('div[id*="footer"]')
-
-                    if (footer !== null) {
-
-                        footer.classList.add('hidden')
-                    }
-                }
-            });
-        }
-
-    })
 
 });
 
