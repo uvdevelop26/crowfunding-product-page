@@ -21,8 +21,6 @@ const progressBar = dataPledgeArea.querySelector('#progress-bar');
 
 
 
-
-
 // functions
 
 function animationModalOpen(modal, menu) {
@@ -31,12 +29,13 @@ function animationModalOpen(modal, menu) {
     menu.classList.remove('hidden')
 
     setTimeout(() => {
-        
-        modal.classList.remove('bg-opacity-0')
-        modal.classList.add('bg-opacity-40')
-        menu.classList.remove('scale-0')
-        menu.classList.add('scale-100')
 
+        modal.classList.add('bg-opacity-40')
+        modal.classList.remove('bg-opacity-0')
+        
+        menu.classList.add('scale-100')
+        menu.classList.remove('scale-0')
+        
     }, 500)
 
 }
