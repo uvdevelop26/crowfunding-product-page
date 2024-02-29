@@ -853,10 +853,6 @@ video {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
-.bg-blackOp50 {
-  background-color: rgba(0, 0, 0, .5);
-}
-
 .bg-darkCyan {
   --tw-bg-opacity: 1;
   background-color: hsl(176 72% 28% / var(--tw-bg-opacity));
@@ -884,10 +880,6 @@ video {
 
 .bg-opacity-0 {
   --tw-bg-opacity: 0;
-}
-
-.bg-opacity-40 {
-  --tw-bg-opacity: 0.4;
 }
 
 .object-cover {
@@ -995,8 +987,8 @@ video {
   padding-top: 2rem;
 }
 
-.pt-\[28\.6rem\] {
-  padding-top: 28.6rem;
+.pt-\[15\.6rem\] {
+  padding-top: 15.6rem;
 }
 
 .text-center {
@@ -1109,9 +1101,9 @@ body {
   font-size: 16px;
 }
 
-#hero-section{
-  background: url('../images/image-hero-mobile.jpg');
-  background-position: center;
+#hero-section {
+  background: url("../images/image-hero-mobile.jpg");
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -1120,9 +1112,11 @@ input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
-@media(min-width: 1024px){
-  #hero-section{
-    background: url('../images/image-hero-desktop.jpg');
+@media (min-width: 1024px) {
+  #hero-section {
+    background: url("../images/image-hero-desktop.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: 100% 100%;
   }
 }
