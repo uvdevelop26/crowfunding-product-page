@@ -32,10 +32,10 @@ function animationModalOpen(modal, menu) {
 
         modal.classList.add('bg-opacity-40')
         modal.classList.remove('bg-opacity-0')
-        
+
         menu.classList.add('scale-100')
         menu.classList.remove('scale-0')
-        
+
     }, 500)
 
 }
@@ -84,6 +84,19 @@ function hiddeSelectedMode() {
 
 }
 
+function setScrollHeight(card) {
+
+    const position = card.offsetTop;
+
+    modalSelect.scrollTo({
+        top: position,
+        behavior: 'smooth'
+    })
+
+}
+
+
+
 
 //open and close modal menu nav
 btnOpenNav.addEventListener('click', (e) => {
@@ -111,6 +124,8 @@ btnCloseNav.addEventListener('click', (e) => {
 
     hiddeSelectedMode();
 
+   
+
 });
 
 //open and close pledge with no reward
@@ -125,10 +140,9 @@ btnOpenSelect.addEventListener('click', () => {
 
             const footer = menu.querySelector('#pledge-no-reward-footer');
 
-
             showSelectedMode(menu, footer)
 
-
+            setScrollHeight(menu)
         }
     })
 
@@ -162,6 +176,8 @@ btnSelectWithRegards.forEach((btn, i) => {
                 const footer = card.querySelector('div[id*="footer"]')
 
                 showSelectedMode(card, footer)
+
+                setScrollHeight(card)
 
             }
         })

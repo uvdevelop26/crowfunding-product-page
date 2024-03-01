@@ -44,9 +44,7 @@ function updateData(elem) {
         product.backers = product.backers + 1
     }
 
-    console.log(product)
-
-    showData();
+      showData();
 
 }
 
@@ -93,6 +91,8 @@ btnContinue.forEach((item, i) => {
 btnFinish.addEventListener('click', () => {
 
     animationModalClose(successModal, menuSuccess)
+
+    hiddeSelectedMode()
 
 });
 
